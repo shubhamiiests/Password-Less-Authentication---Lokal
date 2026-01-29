@@ -1,4 +1,4 @@
-PassLess Authentication App (OTP Based)
+# PassLess Authentication App (OTP Based)
 
 This is a passwordless authentication Android app built using Jetpack Compose, MVVM, Hilt, Coroutines, and Firebase Analytics.
 
@@ -6,73 +6,73 @@ Instead of password, user login using email + OTP, which is valid for limited ti
 
 This project is mainly for learning clean architecture, Compose UI, and real-world auth flow.
 
-✨ Features
+# Features
 
-📧 Login using Email
+1. Login using Email
 
-🔢 6-digit OTP based authentication
+2. 6-digit OTP based authentication
 
-⏱ OTP expiry timer (60 seconds)
+3. OTP expiry timer (60 seconds)
 
-🔄 Resend OTP with cooldown
+4. Resend OTP with cooldown
 
-❌ Limited OTP attempts
+5. Limited OTP attempts
 
-✅ Session management (login / logout)
+6. Session management (login / logout)
 
-📊 Firebase Analytics integration
+7. Firebase Analytics integration
 
-🎨 Modern UI using Material 3 + Jetpack Compose
+8. Modern UI using Material 3 + Jetpack Compose
 
-🧱 Tech Stack
+## Tech Stack
 
-Kotlin
+* Kotlin
 
-Jetpack Compose
+* Jetpack Compose
 
-MVVM Architecture
+* MVVM Architecture
 
-Hilt (Dependency Injection)
+* Hilt (Dependency Injection)
 
-Kotlin Coroutines & Flow
+* Kotlin Coroutines & Flow
 
-DataStore Preferences
+* DataStore Preferences
 
-Firebase Analytics
+* Firebase Analytics
 
-Material 3
+* Material 3
 
-🏗 Architecture Overview
+## Architecture Overview
 
 This app follow Clean Architecture with clear separation of layers.
 
-presentation (UI + ViewModels)
-domain (UseCases + Managers)
-data (Repository + DataStore)
+-> presentation (UI + ViewModels)
+-> domain (UseCases + Managers)
+-> data (Repository + DataStore)
 
 Flow example:
-UI → ViewModel → UseCase → Manager → Repository → DataStore
+# UI → ViewModel → UseCase → Manager → Repository → DataStore
 
 
 No UI directly talks to data layer.
 
-🔐 Authentication Flow
+*** Authentication Flow
 
-User enters email
+1. User enters email
 
-OTP is generated (valid for 60 sec)
+2. OTP is generated (valid for 60 sec)
 
-User enter OTP
+3. User enter OTP
 
-OTP is validated
+4. OTP is validated
 
-Session is created
+4. Session is created
 
-User navigates to Session screen
+5. User navigates to Session screen
 
-On logout, session is cleared
+6. On logout, session is cleared
 
-⏱ OTP Logic
+*** OTP Logic
 
 OTP length = 6 digits
 
@@ -84,7 +84,7 @@ OTP stored in-memory (for demo purpose)
 
 Timer updates UI every second
 
-📊 Firebase Analytics Events
+# Firebase Analytics Events
 
 Firebase Analytics is used to track user behavior.
 
@@ -102,94 +102,53 @@ Event Params Example:
 }
 
 
-⚠️ Full email or OTP is never logged (privacy safe).
 
-🧪 Debug Firebase Events (Important)
-
-Firebase events take time to appear normally.
-
-To see events instantly:
-
-adb shell setprop debug.firebase.analytics.app com.example.passlessauthethication
-
-
-Then open:
-
-Firebase Console → Analytics → DebugView
-
-
-Now events will appear live.
-
-🗂 Key Modules & Files
-Authentication
-
-LoginScreen
-
-OtpScreen
-
-OtpViewModel
-
-LoginViewModel
-
-Session
-
-SessionScreen
-
-SessionViewModel
-
-SessionRepository
-
-PreferencesManager
-
-Domain
-
-GenerateOtpUseCase
-
-ValidateOtpUseCase
-
-ManageSessionUseCase
-
-OtpManager
-
-Analytics
-
-AnalyticsEvent
-
-AnalyticsLogger
-
-💾 Session Management
-
-Session is stored using DataStore Preferences.
-
-Saved data:
-
-Email
-
-Session start time
-
-Session active flag
-
-Session auto restore on app restart.
-
-🎨 UI Components
-
-Reusable components:
-
-CustomTextField
-
-CustomButton
-
-OtpInputField
-
-Material 3 based design with rounded corners and animations.
-
-🚨 Known Limitations
-
-OTP stored in-memory (not backend)
-
-Debug OTP visible (remove in production)
-
-No real email sending (simulated)
-
-This app is not production ready, but good for learning and demo.﻿# Password-Less-Authentication---Lokal
+app/src/main/java/com/example/passlessauthethication/
+├── PassLessApp.kt
+├── di/
+│   ├── AppModule.kt
+│   └── AnalyticsModule.kt
+├── data/
+│   ├── model/
+│   │   ├── OtpData.kt
+│   │   └── SessionData.kt
+│   ├── repository/
+│   │   ├── OtpRepository.kt
+│   │   └── SessionRepository.kt
+│   └── local/
+│       └── PreferencesManager.kt
+├── domain/
+│   ├── usecase/
+│   │   ├── GenerateOtpUseCase.kt
+│   │   ├── ValidateOtpUseCase.kt
+│   │   └── ManageSessionUseCase.kt
+│   └── manager/
+│       └── OtpManager.kt
+├── presentation/
+│   ├── navigation/
+│   │   └── Navigation.kt
+│   ├── login/
+│   │   ├── LoginScreen.kt
+│   │   ├── LoginViewModel.kt
+│   │   └── LoginState.kt
+│   ├── otp/
+│   │   ├── OtpScreen.kt
+│   │   ├── OtpViewModel.kt
+│   │   └── OtpState.kt
+│   ├── session/
+│   │   ├── SessionScreen.kt
+│   │   ├── SessionViewModel.kt
+│   │   └── SessionState.kt
+│   └── components/
+│       ├── CustomTextField.kt
+│       ├── CustomButton.kt
+│       └── OtpInputField.kt
+├── analytics/
+│   ├── AnalyticsLogger.kt
+│   └── AnalyticsEvent.kt
+└── ui/
+    └── theme/
+        ├── Color.kt
+        ├── Theme.kt
+        └── Type.kt
 
