@@ -102,7 +102,7 @@ Event Params Example:
 }
 
 
-
+# Project Structure
 app/src/main/java/com/example/passlessauthethication/
 ├── PassLessApp.kt
 ├── di/
@@ -151,4 +151,5 @@ app/src/main/java/com/example/passlessauthethication/
         ├── Color.kt
         ├── Theme.kt
         └── Type.kt
+
 
